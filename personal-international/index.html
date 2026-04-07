@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>个人信息卡片</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="top-controls">
+      <div class="mode-switch" id="modeSwitch" aria-label="编辑预览模式切换">
+        <span class="mode-indicator"></span>
+        <button class="mode-option is-active" type="button" data-mode="preview">
+          预览
+        </button>
+        <button class="mode-option" type="button" data-mode="edit">编辑</button>
+      </div>
+
+      <label class="theme-toggle" aria-label="白天黑夜切换">
+        <span class="theme-text">白天</span>
+        <input type="checkbox" id="themeToggle" />
+        <span class="theme-slider"></span>
+        <span class="theme-text">黑夜</span>
+      </label>
+    </div>
+
+    <main class="page">
+      <section class="card" aria-labelledby="cardTitle">
+        <h1 id="cardTitle" class="sr-only">个人信息卡片</h1>
+
+        <div class="avatar-section">
+          <div
+            class="avatar"
+            id="avatarBox"
+            role="button"
+            tabindex="0"
+            aria-label="点击更换头像"
+          >
+            <img id="avatarImg" alt="头像预览" />
+            <span id="avatarPlaceholder">个人头像</span>
+          </div>
+          <input id="avatarInput" type="file" accept="image/*" hidden />
+        </div>
+
+        <div class="field">
+          <label for="nameInput" class="field-label">姓名</label>
+          <input
+            id="nameInput"
+            class="edit-input"
+            type="text"
+            placeholder="请输入姓名"
+            maxlength="20"
+          />
+          <p id="nameText" class="preview-text">请输入姓名</p>
+        </div>
+
+        <div class="field">
+          <label for="bioInput" class="field-label">个人简介</label>
+          <textarea
+            id="bioInput"
+            class="edit-input bio-input"
+            placeholder="请输入个人简介"
+            maxlength="200"
+            rows="5"
+          ></textarea>
+          <p id="bioText" class="preview-text bio-text">请输入个人简介</p>
+        </div>
+
+        <button id="saveBtn" class="save-btn" type="button">保存</button>
+      </section>
+    </main>
+
+    <!-- 自定义头像弹窗 -->
+    <div class="modal-overlay hidden" id="avatarModalOverlay">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="avatarModalTitle"
+      >
+        <h2 id="avatarModalTitle">更换头像</h2>
+        <p class="modal-desc">请选择接下来要执行的操作：</p>
+
+        <div class="modal-actions">
+          <button
+            type="button"
+            class="modal-btn secondary"
+            id="avatarDefaultBtn"
+          >
+            使用默认头像
+          </button>
+          <button
+            type="button"
+            class="modal-btn secondary"
+            id="avatarCancelBtn"
+          >
+            取消
+          </button>
+          <button type="button" class="modal-btn primary" id="avatarConfirmBtn">
+            确认更换
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
